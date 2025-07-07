@@ -10,12 +10,12 @@ import SwiftUI
 struct Artist {
     let name: String
     let bio: String
-    let image: Int
+    let image: String
     let works: [Work]
 }
 
 struct Work {
     let title: String
-    let image: Image
+    let image: String
     let info: String
 }
