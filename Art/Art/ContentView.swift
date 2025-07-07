@@ -9,13 +9,23 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        HStack {
+            Image(._0)
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .clipped()
+                .frame(width: 96, height: 96, alignment: .center)
+                .clipShape(RoundedRectangle(cornerRadius: 12))
+            
+            VStack(alignment: .leading) {
+                Text("Artists Name")
+                    .font(.title)
+                    .foregroundStyle(.gray)
+                Text("biobiobiobioiboibobiobiobioboioiboiobiobiobiobioioiobioioboiboiobi")
+                    .font(.title2)
+                    .lineLimit(2)
+            }
         }
-        .padding()
     }
 }
 
