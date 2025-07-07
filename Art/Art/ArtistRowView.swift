@@ -30,3 +30,7 @@ struct ArtistRowView: View {
         }
     }
 }
+
+#Preview {
+    ArtistRowView(artist: parseArtists()[0])
+}

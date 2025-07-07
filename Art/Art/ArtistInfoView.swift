@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ArtistInfo: View {
+struct ArtistInfoView: View {
     let artist: Artist
     
     var body: some View {
@@ -15,9 +15,6 @@ struct ArtistInfo: View {
             Image(artist.image)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .clipped()
-                .frame(height: 384 ,alignment: .center)
-                .clipShape(RoundedRectangle(cornerRadius: 12))
             Text("Biography")
                 .font(.title)
             Text(artist.bio)
@@ -30,5 +27,5 @@ struct ArtistInfo: View {
 }
 
 #Preview {
-    ArtistInfo(artist: parseArtists()[0])
+    ArtistInfoView(artist: parseArtists()[0])
 }
