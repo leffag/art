@@ -7,15 +7,19 @@
 
 import SwiftUI
 
-struct Artist {
+struct Artist: Codable {
     let name: String
     let bio: String
     let image: String
     let works: [Work]
 }
 
-struct Work {
+struct Work: Codable {
     let title: String
     let image: String
     let info: String
+}
+
+struct Artists: Codable {
+    let artists: [Artist]
 }
