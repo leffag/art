@@ -20,12 +20,21 @@ struct ArtistInfoView: View {
             Text(artist.bio)
                 .font(.title2)
                 .foregroundStyle(.gray)
-            Image(artist.works[0].image)
-            Text(artist.works[0].title)
+            ForEach(artist.works, id: \.title) { work in
+                NavigationLink() {
+                    WorkInfoView(work: work)
+                } label: {
+                    VStack{
+                        Image(work.image)
+                        Text(work.title)
+                    }
+                }
+                
+            }
         }
     }
 }
 
-#Preview {
-    ArtistInfoView(artist: parseArtists()[0])
-}
+//#Preview {
+//    ArtistInfoView(artist: parseArtists()[0])
+//}

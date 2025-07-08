@@ -9,10 +9,17 @@ import SwiftUI
 
 struct ContentView: View {
     let artists = parseArtists()
+    
     var body: some View {
-        List(artists, id: \.name) {
-            artist in
-            ArtistRowView(artist: artist)
+        NavigationView() {
+            List(artists, id: \.name) {
+                artist in
+                NavigationLink() {
+                    ArtistInfoView(artist: artist)
+                } label: {
+                    ArtistRowView(artist: artist)
+                }
+            }
         }
     }
 }
@@ -23,15 +30,17 @@ struct ContentView: View {
 
 func parseArtists() -> [Artist] {
     let data: Data
-    guard let fileURL = Bundle.main.url(forResource: "Artists.json", withExtension: nil) else {
+    
+    guard let fileURL = Bundle.main.url(forResource: "Artists.json", withExtension: nil)
+    else {
         fatalError("Couldn't find the file in main bundle.")
     }
     
     do {
         data = try Data(contentsOf: fileURL)
-       } catch {
-           fatalError("Couldn't find")
-       }
+    } catch {
+        fatalError("Couldn't find")
+    }
     
     do {
         let decoder = JSONDecoder()
