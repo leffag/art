@@ -10,12 +10,9 @@ import SwiftUI
 struct ContentView: View {
     let artists = parseArtists()
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                ArtistRowView(artist: artists[5])
-                ArtistRowView(artist: artists[4])
-            }
-            .padding(EdgeInsets(top: 19, leading: 21, bottom: 16, trailing: 16))
+        List(artists, id: \.name) {
+            artist in
+            ArtistRowView(artist: artist)
         }
     }
 }
@@ -29,7 +26,7 @@ func parseArtists() -> [Artist] {
     guard let fileURL = Bundle.main.url(forResource: "Artists.json", withExtension: nil) else {
         fatalError("Couldn't find the file in main bundle.")
     }
-    //
+    
     do {
         data = try Data(contentsOf: fileURL)
        } catch {
