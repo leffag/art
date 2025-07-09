@@ -9,9 +9,16 @@ import SwiftUI
 
 struct WorkInfoView: View {
     let work: Work
+    @State var isShow = false
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Image(work.image)
+            Button(action: { isShow = true }) {
+                Image(work.image)
+            }
+            .sheet(isPresented: $isShow) {
+                WorkView(work: work)
+            }
             Text(work.title)
                 .font(.title)
             Text(work.info)

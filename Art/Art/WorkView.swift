@@ -12,7 +12,10 @@ struct WorkView: View {
     
     var body: some View {
         Image(work.image)
-            .aspectRatio(contentMode: .fill)
+            .resizable()
+            .scaledToFill()
+            .rotationEffect(.degrees(-90))
+        //TODO: растянуть картинку
     }
 }
 

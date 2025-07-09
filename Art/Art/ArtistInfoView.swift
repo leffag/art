@@ -15,6 +15,7 @@ struct ArtistInfoView: View {
             Image(artist.image)
                 .resizable()
                 .aspectRatio(contentMode: .fill)
+                //TODO: ignoreSaveArea
             Text("Biography")
                 .font(.title)
             Text(artist.bio)
@@ -29,7 +30,6 @@ struct ArtistInfoView: View {
                         Text(work.title)
                     }
                 }
-                
             }
         }
     }
