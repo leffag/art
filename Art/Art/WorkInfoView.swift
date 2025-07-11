@@ -12,16 +12,28 @@ struct WorkInfoView: View {
     @State var isShow = false
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Button(action: { isShow = true }) {
+        ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
                 Image(work.image)
+                    .resizable()
+                    .scaledToFit()
+                
+                Text(work.title)
+                    .font(.title)
+                
+                Text(work.info)
             }
-            .sheet(isPresented: $isShow) {
-                WorkView(work: work)
+            .padding(.horizontal, 16)
+        }
+        .safeAreaInset(edge: .bottom) {
+            Button(action: { isShow = true }) {
+                Text("Развернуть")
             }
-            Text(work.title)
-                .font(.title)
-            Text(work.info)
+            .buttonStyle(.borderedProminent)
+            .tint(Color.black)
+        }
+        .sheet(isPresented: $isShow) {
+            WorkView(work: work)
         }
     }
 }
