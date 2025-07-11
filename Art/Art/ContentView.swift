@@ -9,17 +9,26 @@ import SwiftUI
 
 struct ContentView: View {
     let artists = parseArtists()
+    @State var searhText = ""
     
     var body: some View {
-        NavigationView() {
-            List(artists, id: \.name) {
-                artist in
+        NavigationStack() {
+            List(searchResult, id: \.name) { artist in
                 NavigationLink() {
                     ArtistInfoView(artist: artist)
                 } label: {
                     ArtistRowView(artist: artist)
                 }
             }
+        }
+        .searchable(text: $searhText)
+    }
+    
+    var searchResult: [Artist] {
+        if searhText.isEmpty {
+            return artists
+        } else {
+            return artists.filter{$0.name.contains(searhText)}
         }
     }
 }
