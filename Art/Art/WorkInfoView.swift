@@ -12,28 +12,43 @@ struct WorkInfoView: View {
     @State var isShow = false
     
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-                Image(work.image)
-                    .resizable()
-                    .scaledToFit()
-                
-                Text(work.title)
-                    .font(.title)
-                
-                Text(work.info)
+        ZStack {
+            ScrollView {
+                VStack(alignment: .leading, spacing: 16) {
+                    Image(work.image)
+                        .resizable()
+                        .scaledToFit()
+                    
+                    Text(work.title)
+                        .font(.title)
+                    
+                    Text(work.info)
+                }
+                .padding(.horizontal, 16)
             }
-            .padding(.horizontal, 16)
-        }
-        .safeAreaInset(edge: .bottom) {
-            Button(action: { isShow = true }) {
-                Text("Развернуть")
+            .safeAreaInset(edge: .bottom) {
+                Button(action: { isShow = true }) {
+                    Text("Развернуть")
+                }
+                .buttonStyle(.borderedProminent)
+                .tint(Color.black)
             }
-            .buttonStyle(.borderedProminent)
-            .tint(Color.black)
-        }
-        .sheet(isPresented: $isShow) {
-            WorkView(work: work)
+            
+            if isShow {
+                ZStack {
+                    Color(UIColor.systemBackground)
+                        .ignoresSafeArea()
+                    
+                    WorkView(work: work)
+                }
+                .overlay(alignment: .bottom) {
+                    Button(action: { isShow = false }) {
+                        Text("Закрыть")
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .tint(Color.black)
+                }
+            }
         }
     }
 }

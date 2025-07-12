@@ -13,12 +13,19 @@ struct WorkView: View {
     var body: some View {
         Image(work.image)
             .resizable()
-            .scaledToFill()
-            .rotationEffect(.degrees(-90))
-        //TODO: растянуть картинку
+            .scaledToFit()
+            .background(.blue)
+        //TODO: растянуть картинку. разобраться с отступом
     }
 }
 
 #Preview {
-    WorkView(work: parseArtists()[0].works[0])
+//    WorkView(work: parseArtists()[0].works[0])
+    WorkView(
+        work: Work(
+            title: "Mareo",
+            image: "mareo",
+            info: "that's him"
+        )
+    )
 }
