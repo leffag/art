@@ -41,12 +41,14 @@ struct WorkInfoView: View {
                     
                     WorkView(work: work)
                 }
-                .overlay(alignment: .bottom) {
+                .overlay(alignment: .bottomTrailing) {
                     Button(action: { isShow = false }) {
-                        Text("Закрыть")
+                        Image(systemName: "xmark.app")
+                            .resizable()
+                            .frame(width: 32, height: 32)
                     }
-                    .buttonStyle(.borderedProminent)
-                    .tint(Color.black)
+                    .padding()
+                    .tint(Color.primary)
                 }
             }
         }

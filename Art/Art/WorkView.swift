@@ -14,18 +14,9 @@ struct WorkView: View {
         Image(work.image)
             .resizable()
             .scaledToFit()
-            .background(.blue)
-        //TODO: растянуть картинку. разобраться с отступом
     }
 }
 
 #Preview {
-//    WorkView(work: parseArtists()[0].works[0])
-    WorkView(
-        work: Work(
-            title: "Mareo",
-            image: "mareo",
-            info: "that's him"
-        )
-    )
+    WorkView(work: parseArtists()[0].works[0])
 }
