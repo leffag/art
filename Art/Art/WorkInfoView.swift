@@ -41,6 +41,7 @@ struct WorkInfoView: View {
                     
                     WorkView(work: work)
                 }
+                .toolbar(.hidden)
                 .overlay(alignment: .bottomTrailing) {
                     Button(action: { isShow = false }) {
                         Image(systemName: "xmark.app")

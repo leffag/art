@@ -37,7 +37,7 @@ struct ArtistInfoView: View {
                             .foregroundStyle(.gray)
                     }
                     
-                    VStack(alignment: .leading, spacing: 16) {
+                    VStack(alignment: .leading, spacing: 32) {
                         Text("Works")
                             .font(.title)
                         
@@ -49,7 +49,11 @@ struct ArtistInfoView: View {
                                     Image(work.image)
                                         .resizable()
                                         .aspectRatio(contentMode: .fit)
-                                    Text(work.title)
+                                    HStack {
+                                        Text(work.title)
+                                            .foregroundColor(.secondary)
+                                        Spacer()
+                                    }
                                 }
                             }
                         }
